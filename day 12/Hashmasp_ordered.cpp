@@ -1,4 +1,4 @@
-// this is the unordered map file 
+// this is the ordered map file. This file will print the key value pairs in the ordered manner.
 
 #include<iostream>
 #include<map>
