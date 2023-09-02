@@ -102,11 +102,48 @@ void postorder(node *root){
     cout << root -> data << " ";
 }
 
+void buildFromLevelOrder(node* &root){
+    queue <node*> q;
+    int data;
+
+    cout << "Enter the data for the root : " << endl;
+    cin >> data;
+
+    root = new node(data);
+    q.push(root);
+
+    while(!q.empty()){
+        node *temp = q.front();
+        q.pop();
+
+        int leftdata;
+        cout << "Enter the data for the left node : " << temp -> data << endl;
+        cin >> leftdata;
+
+        if(leftdata != -1){
+            temp -> left = new node(leftdata);
+            q.push(temp -> left);
+        }
+
+        int rightdata;
+        cout << "Enter the data for the right node : " << temp -> data << endl;
+        cin >> rightdata;
+
+        if(rightdata != -1){
+            temp -> right = new node(rightdata);
+            q.push(temp -> right);
+        }
+    }
+}
+
 using namespace std;
 int main()
 {
     node *root = NULL;
 
+    buildFromLevelOrder(root);
+    levelOrdertraversal(root);
+    /*
     // creation of tree
     root = buildTree(root);
 
@@ -121,5 +158,6 @@ int main()
 
     cout << "Postorder traversal is : " << endl;
     postorder(root);
+    */
     return 0;
 }
